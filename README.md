@@ -9,44 +9,103 @@ The device includes a built-in Wi-Fi web interface, allowing you to easily confi
 
 Installation:
 
-You can flash the firmware using the following online tool: https://thelastoutpostworkshop.github.io/ESPConnect/
+Flashing ESP Firmware Using the Espressif Web Flash Tool
 
-ESPConnect is a zero‑installation web application that runs entirely in a modern Chromium‑based browser (Chrome, Edge, Brave, etc.) and lets you explore, manage, back up, and flash firmware on ESP32 boards straight from the browser — no Python, no command‑line, no desktop tools required.
+This guide explains how to flash firmware to an ESP device using Espressif’s browser-based flashing tool.
 
-🔌 What You’ll Need
+Requirements
 
-A Chromium‑based browser (Chrome, Edge, Brave, etc.) up to date.
+A computer with Google Chrome or Microsoft Edge
 
-An ESP32 board connected to your computer with a USB cable that has data lines (not just charging‑only).
+A USB cable connected to your ESP board
 
-Your firmware file in .bin format ready to upload (you can download it fromthis github).
+The compiled firmware file (.bin)
 
-📡 How to Flash Firmware Using ESPConnect
+1. Open the Web Flash Tool
 
-Open ESPConnect in your browser
-Go to the web app page:
-https://thelastoutpostworkshop.github.io/ESPConnect/
+Open the following page in your browser:
 
-Connect Your Board
-– Click the “Connect” button in the interface.
-– Your browser will prompt you to choose the serial port. Pick the one your ESP is on.
-– If your board doesn’t automatically enter bootloader mode, follow the on‑screen instructions to hold BOOT while clicking Connect.
+https://espressif.github.io/esptool-js/
 
-Open the Flash Tools Section
-– Once connected, the navigation sidebar will unlock.
-– Select “Flash” or “Flash Firmware” from the menu — this is where firmware uploading happens.
+This tool runs directly in the browser and does not require installing any software.
 
-Load Your Firmware File
-– Click the area/button to open a file dialog.
-– Select the .bin firmware file you want to flash.
-- select Erase entire flash before writing option box.
-– Leave the Flash offset settings on 0x0.
+2. Connect the ESP Device
 
-Start Flashing
-– Press the “Flash” button to begin.
-– You’ll see a progress indicator. Wait until it completes.
-– Don’t disconnect while it’s flashing; wait for the bar to fill and show success.
+Connect your ESP board to the computer using a USB cable.
 
-Disconnect and Reboot
-– After flashing finishes, click “Disconnect” and reset your board (press RESET).
-– Your new firmware should now run.
+Click the Connect button on the web page.
+
+A window will appear showing available serial ports.
+
+Select the COM port corresponding to your ESP device (USB JTAG/serial debug unit (COM xx) - Paired
+
+Click Connect.
+
+3. Set the Flash Address and Firmware File
+
+In the Flash Address field, enter:
+
+0x0
+
+Click Choose File.
+
+Select your firmware .bin file.
+
+Example configuration:
+
+Address	File
+0x0	firmware.bin
+
+
+4. Optional Settings (Recommended)
+
+Before flashing, enable:
+
+Erase Flash – This clears any previous firmware and prevents compatibility issues.
+
+Leave other settings at their default values unless specific changes are required.
+
+Typical defaults:
+
+Flash Mode: Keep
+
+Flash Size: Keep
+
+Baud Rate: 460800 or 921600
+
+5. Enter Bootloader Mode (Only If Required)
+
+Many ESP boards enter flashing mode automatically.
+
+If flashing fails, manually enter bootloader mode:
+
+Hold the BOOT button.
+
+Press and release the RESET button.
+
+Release the BOOT button.
+
+The board is now ready for flashing.
+
+6. Flash the Firmware
+
+Click Program.
+
+The flashing process will begin.
+
+Example console output:
+
+Erasing flash...
+Writing at 0x00000000...
+Hash verified.
+Hard resetting via RTS pin...
+
+Wait until the process completes.
+
+7. Finish
+
+After flashing is finished:
+
+Press the RESET button on the ESP board (if it does not reboot automatically).
+
+The new firmware will start running.
