@@ -11,98 +11,13 @@ The device includes a built-in Wi-Fi web interface, allowing you to easily confi
 
 **Installation:**
 
-Flashing ESP Firmware Using the Espressif Web Flash Tool
+Flashing ESP Firmware Using the MicroMaker dedicated Web Flash Tool:
 
-This guide explains how to flash firmware to an ESP device using Espressif’s browser-based flashing tool.
-
-**Requirements**
-
-A computer with Google Chrome or Microsoft Edge
-
-A USB cable connected to your ESP board
-
-The compiled firmware file (.bin)
-
-**1. Open the Web Flash Tool**
-
-Open the following page in your browser:
-
-https://espressif.github.io/esptool-js/
-
-This tool runs directly in the browser and does not require installing any software.
-
-**2. Connect the ESP Device**
-
-Connect your ESP board to the computer using a USB cable.
-
-Click the Connect button on the web page.
-
-A window will appear showing available serial ports.
-
-Select the COM port corresponding to your ESP device (USB JTAG/serial debug unit (COM xx) - Paired
-
-Click Connect.
-
-**3. Set the Flash Address and Firmware File**
-
-In the Flash Address field, enter:
-
-0x0
-
-Click Choose File.
-
-Select your firmware .bin file.
-
-Example configuration:
-
-Address	File
-0x0	firmware.bin
-
-
-**4. Optional Settings (Recommended)**
-
-Before flashing, enable:
-
-Erase Flash – This clears any previous firmware and prevents compatibility issues.
-
-Leave other settings at their default values unless specific changes are required.
-
-Typical defaults:
-
-Flash Mode: Keep
-
-Flash Size: Keep
-
-Baud Rate: 460800 or 921600
-
-**5. Enter Bootloader Mode (Only If Required)**
-
-Many ESP boards enter flashing mode automatically.
-
-If flashing fails, manually enter bootloader mode:
-
-Hold the BOOT button.
-
-Press and release the RESET button.
-
-Release the BOOT button.
-
-The board is now ready for flashing.
-
-**6. Flash the Firmware**
-
-Click Program.
-
-The flashing process will begin.
-
-Example console output:
-
-Erasing flash...
-Writing at 0x00000000...
-Hash verified.
-Hard resetting via RTS pin...
-
-Wait until the process completes.
+https://micromkr.github.io/firmware/MicroMaker-Flasher.html
+Connect your ESP32-S3
+choose the Mouse Keep-Alive firmware
+Press Connect device - choose your device
+Press flash firmware
 
 **7. Finish**
 
